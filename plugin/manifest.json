@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "chris.switcher",
+  "name": "App switcher",
+  "version": "1.0.0",
+  "author": "Chris Aloi",
+  "description": "macOS-style SUPER+TAB app strip, driven by ~/.config/hypr/switcher.lua.",
+  "kinds": [
+    "panel"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "panel": "Switcher.qml"
+  }
+}
