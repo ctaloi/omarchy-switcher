@@ -17,8 +17,6 @@ local HUD_DELAY_MS = 110 -- quick taps switch without flashing the strip
 if _G.chris_switcher and _G.chris_switcher.timer then
   _G.chris_switcher.timer:set_enabled(false)
 end
--- Seeded from the clock so a fresh Hyprland never reuses a number the
--- long-running shell has already seen closed.
 local seq = (_G.chris_switcher and _G.chris_switcher.seq) or os.time()
 _G.chris_switcher = { seq = seq }
 local state = _G.chris_switcher

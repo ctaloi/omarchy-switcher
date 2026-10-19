@@ -43,6 +43,6 @@ then `omarchy-shell shell setPluginEnabled chris.switcher false`.
 
 ```bash
 hyprctl eval 'chris_switcher.step(1)'   # one tap of SUPER+TAB
-omarchy-shell switcher show '{"seq":1e12,"selected":0,"items":[{"class":"foot","title":"","count":2}]}'
-omarchy-shell switcher close 1e12
+omarchy-shell switcher show '{"seq":1,"selected":0,"items":[{"class":"foot","title":"","count":2}]}'
+omarchy-shell switcher close 1
 ```

@@ -88,7 +88,8 @@ Item {
   function show(payloadJson) {
     try {
       var p = JSON.parse(payloadJson || "{}")
-      if ((p.seq || 0) <= root.closedSeq) return
+      // A show that lost the race with its own session's close.
+      if (p.seq !== undefined && Number(p.seq) === root.closedSeq) return
       root.items = p.items || []
       root.selected = p.selected || 0
       root.opened = root.items.length > 0
@@ -106,7 +107,7 @@ Item {
     target: "switcher"
     function show(payloadJson: string): string { root.show(payloadJson); return "ok" }
     function close(seq: string): string {
-      root.closedSeq = Math.max(root.closedSeq, Number(seq) || 0)
+      root.closedSeq = Number(seq) || 0
       root.opened = false
       return "ok"
     }
