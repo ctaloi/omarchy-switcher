@@ -53,15 +53,26 @@ local function switchable(window)
     and not window.workspace.special
 end
 
+-- Shell plugins that open real windows (Omamail and the like) all run inside
+-- omarchy-shell and share its org.quickshell class, so only the title tells
+-- them apart. The strip resolves that title to the plugin's desktop entry.
+local function app_key(window)
+  if window.class == "org.quickshell" and window.title ~= "" then
+    return window.title
+  end
+  return window.class
+end
+
 -- One entry per app, ordered by its most recently focused window.
 local function app_list()
   local by_class, apps = {}, {}
   for _, window in ipairs(hl.get_windows()) do
     if switchable(window) then
-      local app = by_class[window.class]
+      local key = app_key(window)
+      local app = by_class[key]
       if not app then
-        app = { class = window.class, window = window, count = 0 }
-        by_class[window.class] = app
+        app = { class = key, window = window, count = 0 }
+        by_class[key] = app
         table.insert(apps, app)
       end
       app.count = app.count + 1
@@ -146,7 +157,7 @@ local function cycle_app_windows(delta)
 
   local windows = {}
   for _, window in ipairs(hl.get_windows()) do
-    if window.class == active.class and switchable(window) then
+    if app_key(window) == app_key(active) and switchable(window) then
       table.insert(windows, window)
     end
   end
