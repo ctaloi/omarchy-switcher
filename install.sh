@@ -5,7 +5,7 @@ set -euo pipefail
 
 repo=$(cd "$(dirname "$0")" && pwd)
 hypr=~/.config/hypr
-plugin=~/.config/omarchy/plugins/chris.switcher
+plugin=~/.config/omarchy/plugins/aloi.switcher
 
 link() {
   local src=$1 dest=$2
@@ -26,7 +26,7 @@ if ! grep -q 'require("hypr.switcher")' "$hypr/bindings.lua"; then
 fi
 
 omarchy-shell -q shell rescanPlugins
-omarchy-shell -q shell setPluginEnabled chris.switcher true
+omarchy-shell -q shell setPluginEnabled aloi.switcher true
 omarchy restart shell >/dev/null 2>&1 || true
 hyprctl reload >/dev/null
 errors=$(hyprctl configerrors)

@@ -6,8 +6,8 @@
 --   SUPER + GRAVE (`/~)  Cycle windows of the focused app. SHIFT reverses.
 --                        While the app strip is up, steps it backwards.
 --
--- The app strip is drawn by the chris.switcher shell plugin
--- (~/.config/omarchy/plugins/chris.switcher); this file owns all the state and
+-- The app strip is drawn by the aloi.switcher shell plugin
+-- (~/.config/omarchy/plugins/aloi.switcher); this file owns all the state and
 -- pushes it there over IPC.
 
 local POLL_MS = 15 -- how often to check whether SUPER is still held

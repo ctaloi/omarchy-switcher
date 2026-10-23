@@ -17,7 +17,7 @@ move between workspaces.
 
 - `hypr/switcher.lua`: all state and key handling. Polls whether SUPER is still
   held, then focuses the chosen app's most recent window.
-- `plugin/`: the `chris.switcher` Omarchy shell plugin that draws the strip.
+- `plugin/`: the `aloi.switcher` Omarchy shell plugin that draws the strip.
   It only renders what the Lua side pushes over `omarchy-shell switcher show|close`.
 
 ## Install
@@ -27,7 +27,7 @@ move between workspaces.
 ```
 
 Symlinks `hypr/switcher.lua` into `~/.config/hypr/` and the plugin files into
-`~/.config/omarchy/plugins/chris.switcher/`, adds `require("hypr.switcher")` to
+`~/.config/omarchy/plugins/aloi.switcher/`, adds `require("hypr.switcher")` to
 `~/.config/hypr/bindings.lua`, enables the plugin, and validates the Hyprland
 config. Re-run it after `omarchy refresh hyprland`, which resets `bindings.lua`.
 
@@ -37,7 +37,7 @@ Edits in this repo are live: Hyprland reloads the Lua on save. The plugin is
 ## Uninstall
 
 Delete the `require("hypr.switcher")` line from `~/.config/hypr/bindings.lua`,
-then `omarchy-shell shell setPluginEnabled chris.switcher false`.
+then `omarchy-shell shell setPluginEnabled aloi.switcher false`.
 
 ## Debugging
 
