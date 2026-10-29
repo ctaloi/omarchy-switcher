@@ -87,8 +87,11 @@ local function app_list()
   return apps
 end
 
+-- is_key_down finds keys by the default keymap, which doesn't know about a
+-- keyboard that swaps Left Alt and Super (altwin:swap_lalt_lwin), so on one
+-- of those the Super key is the one in Left Alt's place.
 local function super_held()
-  return hl.is_key_down("Super_L") or hl.is_key_down("Super_R")
+  return hl.is_key_down("Super_L") or hl.is_key_down("Super_R") or hl.is_key_down("Alt_L")
 end
 
 local function push_hud()
@@ -186,14 +189,6 @@ hl.unbind("SUPER + SHIFT + TAB")
 
 o.bind("SUPER + TAB", "Switch app", function() step(1) end)
 o.bind("SUPER + SHIFT + TAB", "Switch app backwards", function() step(-1) end)
--- While the app strip is up, ` steps it backwards (as on macOS); otherwise it
--- cycles the focused app's windows.
-o.bind("SUPER + code:49", "Next window of this app", function()
-  if state.apps then step(-1) else cycle_app_windows(1) end
-end)
-o.bind("SUPER + SHIFT + code:49", "Previous window of this app", function()
-  if state.apps then step(1) else cycle_app_windows(-1) end
-end)
 
 -- Exposed for testing from `hyprctl eval`.
 state.step = step
